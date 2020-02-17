@@ -87,7 +87,7 @@ cp -a ./doc/man/* $RPM_BUILD_ROOT/%{_mandir}/
 - Type:enhancement
 - ID:NA
 - SUG:NA
-- DESC:update tevent to 0.10.1
+- DESC:update libtevent to 0.10.1
 
 * Tue Sep 3 2019  wubo<wubo40@huawei.com> - 0.9.37-4
 - Package init
