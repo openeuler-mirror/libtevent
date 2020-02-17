@@ -1,0 +1,25 @@
+From db2e45ac6b6980eb74053ba79af7b064764cc395 Mon Sep 17 00:00:00 2001
+From: eulerstorage <eulerstorage@huawei.com>
+Date: Wed, 12 Feb 2020 16:12:54 +0800
+Subject: [PATCH] tevent
+
+---
+ tevent_wrapper.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tevent_wrapper.c b/tevent_wrapper.c
+index a0e915f..f431e8f 100644
+--- a/tevent_wrapper.c
++++ b/tevent_wrapper.c
+@@ -339,7 +339,7 @@ struct tevent_context *_tevent_context_wrapper_create(struct tevent_context *mai
+ 		/*
+ 		 * stacking of wrappers is not supported
+ 		 */
+-		tevent_debug(main_ev->wrapper.glue->main_ev, TEVENT_DEBUG_FATAL,
++		tevent_debug(main_ev, TEVENT_DEBUG_FATAL,
+ 			     "%s: %s() stacking not allowed\n",
+ 			     __func__, location);
+ 		errno = EINVAL;
+-- 
+1.8.3.1
+
