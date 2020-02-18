@@ -72,7 +72,6 @@ cp -a ./doc/man/* $RPM_BUILD_ROOT/%{_mandir}/
 %{_includedir}/tevent.h
 %{_libdir}/libtevent.so
 %{_libdir}/pkgconfig/tevent.pc
-%{_mandir}/man3/tevent*.gz
 
 %files -n python3-tevent
 %{python3_sitearch}/*

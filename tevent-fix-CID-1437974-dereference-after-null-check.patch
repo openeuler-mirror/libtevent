@@ -1,8 +1,19 @@
-From db2e45ac6b6980eb74053ba79af7b064764cc395 Mon Sep 17 00:00:00 2001
-From: eulerstorage <eulerstorage@huawei.com>
-Date: Wed, 12 Feb 2020 16:12:54 +0800
-Subject: [PATCH] tevent
+From ba991da43469a1844b67fcec19a15ceda409fc3f Mon Sep 17 00:00:00 2001
+From: Ralph Boehme <slow@samba.org>
+Date: Tue, 17 Jul 2018 12:59:50 +0200
+Subject: [PATCH 04/27] tevent: fix CID 1437974 dereference after null check
 
+Probably a copy/paste error from the tevent_debug() statement a few
+lines above as at this place we want to pass main_ev directly to
+tevent_debug() anyway.
+
+Signed-off-by: Ralph Boehme <slow@samba.org>
+Reviewed-by: Volker Lendecke <vl@samba.org>
+
+Autobuild-User(master): Volker Lendecke <vl@samba.org>
+Autobuild-Date(master): Tue Jul 17 16:21:21 CEST 2018 on sn-devel-144
+
+Signed-off-by: root <root@localhost.localdomain>
 ---
  tevent_wrapper.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
