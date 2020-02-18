@@ -1,22 +1,20 @@
 %{!?python3_sitearch: %define python3_sitearch %(%{__python3} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
 
-Name:      libtevent
-Version:   0.9.37
-Release:   4
-Summary:   Tevent is an event system based on the talloc memory management library.
-License:   LGPLv3+
-URL:       http://tevent.samba.org
-Source0:   http://samba.org/ftp/tevent/tevent-%{version}.tar.gz
+Name:          libtevent
+Version:       0.10.1
+Release:       1
+Summary:       Tevent is an event system based on the talloc memory management library.
+License:       LGPLv3+
+URL:           http://tevent.samba.org
+Source0:       http://samba.org/ftp/tevent/tevent-%{version}.tar.gz
 
-Patch6000: 6000-tevent-fix-CID-1437976-dereference-before-null-check.patch
-Patch6001: 6001-tevent-fix-CID-1437974-dereference-after-null-check.patch
-Patch6002: 6002-lib-tevent-Use-correct-C99-initializer-for-tevent_re.patch
+Patch0:        tevent-fix-CID-1437974-dereference-after-null-check.patch
 
 BuildRequires: gcc libtirpc-devel docbook-style-xsl doxygen libxslt git
-BuildRequires: python2-devel python2-talloc-devel >= 2.1.0 libtalloc-devel >= 2.1.0
-BuildRequires: python3-devel python3-talloc-devel >= 2.0.7
+BuildRequires: libtalloc-devel >= 2.2.0
+BuildRequires: python3-devel python3-talloc-devel >= 2.2.0
 
-Provides: bundled(libreplace)
+Provides:      bundled(libreplace)
 
 
 %description
@@ -31,15 +29,6 @@ Requires: libtalloc-devel%{?_isa} >= 2.0.7 pkgconfig
 
 %description devel
 Libraries and header files for tevent
-
-%package -n python2-tevent
-Summary: Python 2 libraries files for tevent
-Requires: libtevent%{?_isa} = %{version}-%{release}
-
-%{?python_provide:%python_provide python2-tevent}
-
-%description -n python2-tevent
-Python2 libraries files for tevent
 
 %package -n python3-tevent
 Summary: Python 3 libraries files for tevent
@@ -61,10 +50,7 @@ Man for tevent
 %autosetup -n tevent-%{version} -p1 -Sgit
 
 %build
-
-pathfix.py -npi %{__python2} buildtools/bin/waf
-
-%configure --disable-rpath --bundled-libraries=NONE --builtin-libraries=replace --extra-python=%{__python3}
+%configure --disable-rpath --bundled-libraries=NONE --builtin-libraries=replace
 
 %make_build V=1
 doxygen doxy.config
@@ -79,9 +65,6 @@ cp -a ./doc/man/* $RPM_BUILD_ROOT/%{_mandir}/
 %check
 %make_build check
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
-
 %files
 %{_libdir}/libtevent.so.*
 
@@ -89,9 +72,6 @@ cp -a ./doc/man/* $RPM_BUILD_ROOT/%{_mandir}/
 %{_includedir}/tevent.h
 %{_libdir}/libtevent.so
 %{_libdir}/pkgconfig/tevent.pc
-
-%files -n python2-tevent
-%{python2_sitearch}/*
 
 %files -n python3-tevent
 %{python3_sitearch}/*
@@ -102,5 +82,11 @@ cp -a ./doc/man/* $RPM_BUILD_ROOT/%{_mandir}/
 
 
 %changelog
+* Mon Feb 17 2020 sunshihao <sunshihao@huawei.com> - 0.10.1-1
+- Type:enhancement
+- ID:NA
+- SUG:NA
+- DESC:update tevent to 0.10.1
+
 * Tue Sep 3 2019  wubo<wubo40@huawei.com> - 0.9.37-4
 - Package init

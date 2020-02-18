@@ -19,18 +19,18 @@ Signed-off-by: root <root@localhost.localdomain>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/tevent_wrapper.c b/tevent_wrapper.c
-index 05c4c06968a..a07696af0a4 100644
+index a0e915f..f431e8f 100644
 --- a/tevent_wrapper.c
 +++ b/tevent_wrapper.c
-@@ -347,7 +347,7 @@ struct tevent_context *_tevent_context_wrapper_create(struct tevent_context *mai
+@@ -339,7 +339,7 @@ struct tevent_context *_tevent_context_wrapper_create(struct tevent_context *mai
  		/*
- 		 * wrappers conflict with nesting
+ 		 * stacking of wrappers is not supported
  		 */
 -		tevent_debug(main_ev->wrapper.glue->main_ev, TEVENT_DEBUG_FATAL,
 +		tevent_debug(main_ev, TEVENT_DEBUG_FATAL,
- 			     "%s: %s() conflicts with nesting\n",
+ 			     "%s: %s() stacking not allowed\n",
  			     __func__, location);
  		errno = EINVAL;
 -- 
-2.19.1
+1.8.3.1
 
