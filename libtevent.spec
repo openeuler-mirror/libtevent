@@ -33,6 +33,7 @@ Libraries and header files for tevent
 %package -n python3-tevent
 Summary: Python 3 libraries files for tevent
 Requires: libtevent%{?_isa} = %{version}-%{release}
+Obsoletes: python2-libtevent
 
 %{?python_provide:%python_provide python3-tevent}
 
