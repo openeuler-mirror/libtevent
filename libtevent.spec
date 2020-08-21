@@ -2,7 +2,7 @@
 
 Name:          libtevent
 Version:       0.10.1
-Release:       1
+Release:       2
 Summary:       Tevent is an event system based on the talloc memory management library.
 License:       LGPLv3+
 URL:           http://tevent.samba.org
@@ -83,6 +83,12 @@ cp -a ./doc/man/* $RPM_BUILD_ROOT/%{_mandir}/
 
 
 %changelog
+* Fri Aug 21 2020 fanjiachen <fanjiachen3@huawei.com> - 0.10.1-2
+- Type:rebuild
+- ID:NA
+- SUG:NA
+- DESC:rebuild for requirement package update
+
 * Mon Feb 17 2020 sunshihao <sunshihao@huawei.com> - 0.10.1-1
 - Type:enhancement
 - ID:NA
