@@ -1,0 +1,36 @@
+From ba991da43469a1844b67fcec19a15ceda409fc3f Mon Sep 17 00:00:00 2001
+From: Ralph Boehme <slow@samba.org>
+Date: Tue, 17 Jul 2018 12:59:50 +0200
+Subject: [PATCH 04/27] tevent: fix CID 1437974 dereference after null check
+
+Probably a copy/paste error from the tevent_debug() statement a few
+lines above as at this place we want to pass main_ev directly to
+tevent_debug() anyway.
+
+Signed-off-by: Ralph Boehme <slow@samba.org>
+Reviewed-by: Volker Lendecke <vl@samba.org>
+
+Autobuild-User(master): Volker Lendecke <vl@samba.org>
+Autobuild-Date(master): Tue Jul 17 16:21:21 CEST 2018 on sn-devel-144
+
+Signed-off-by: root <root@localhost.localdomain>
+---
+ tevent_wrapper.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tevent_wrapper.c b/tevent_wrapper.c
+index a0e915f..f431e8f 100644
+--- a/tevent_wrapper.c
++++ b/tevent_wrapper.c
+@@ -339,7 +339,7 @@ struct tevent_context *_tevent_context_wrapper_create(struct tevent_context *mai
+ 		/*
+ 		 * stacking of wrappers is not supported
+ 		 */
+-		tevent_debug(main_ev->wrapper.glue->main_ev, TEVENT_DEBUG_FATAL,
++		tevent_debug(main_ev, TEVENT_DEBUG_FATAL,
+ 			     "%s: %s() stacking not allowed\n",
+ 			     __func__, location);
+ 		errno = EINVAL;
+-- 
+1.8.3.1
+
