@@ -1,18 +1,20 @@
 %{!?python3_sitearch: %define python3_sitearch %(%{__python3} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
 
+%global talloc_version 2.3.1
+
 Name:          libtevent
-Version:       0.10.1
-Release:       2
+Version:       0.10.2
+Release:       1
 Summary:       Tevent is an event system based on the talloc memory management library.
 License:       LGPLv3+
 URL:           http://tevent.samba.org
 Source0:       http://samba.org/ftp/tevent/tevent-%{version}.tar.gz
 
-Patch0:        tevent-fix-CID-1437974-dereference-after-null-check.patch
+Patch1:        0001-tevent-fix-CID-1437974-dereference-after-null-check.patch
 
 BuildRequires: gcc libtirpc-devel docbook-style-xsl doxygen libxslt git
-BuildRequires: libtalloc-devel >= 2.2.0
-BuildRequires: python3-devel python3-talloc-devel >= 2.2.0
+BuildRequires: libtalloc-devel >= %{talloc_version}
+BuildRequires: python3-devel python3-talloc-devel >= %{talloc_version}
 
 Provides:      bundled(libreplace)
 
@@ -83,6 +85,9 @@ cp -a ./doc/man/* $RPM_BUILD_ROOT/%{_mandir}/
 
 
 %changelog
+* Thu Jul 30 2020 yanglongkang <yanglongkang@huawei.com> - 0.10.2-1
+- update to 0.10.2 version
+
 * Fri Aug 21 2020 fanjiachen <fanjiachen3@huawei.com> - 0.10.1-2
 - Type:rebuild
 - ID:NA
