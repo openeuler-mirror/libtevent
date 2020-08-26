@@ -88,6 +88,12 @@ cp -a ./doc/man/* $RPM_BUILD_ROOT/%{_mandir}/
 * Thu Jul 30 2020 yanglongkang <yanglongkang@huawei.com> - 0.10.2-1
 - update to 0.10.2 version
 
+* Fri Aug 21 2020 fanjiachen <fanjiachen3@huawei.com> - 0.10.1-2
+- Type:rebuild
+- ID:NA
+- SUG:NA
+- DESC:rebuild for requirement package update
+
 * Mon Feb 17 2020 sunshihao <sunshihao@huawei.com> - 0.10.1-1
 - Type:enhancement
 - ID:NA
