@@ -1,9 +1,9 @@
 %{!?python3_sitearch: %define python3_sitearch %(%{__python3} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
 
-%global talloc_version 2.3.1
+%global talloc_version 2.3.4
 
 Name:          libtevent
-Version:       0.11.0
+Version:       0.13.0
 Release:       1
 Summary:       Tevent is an event system based on the talloc memory management library.
 License:       LGPLv3+
@@ -85,6 +85,9 @@ cp -a ./doc/man/* $RPM_BUILD_ROOT/%{_mandir}/
 
 
 %changelog
+* Thu Aug 18 2022 YukariChiba <i@0x7f.cc> - 0.13.0-1
+- update to v0.13.0 version
+
 * Thu Nov 25 2021 Wenchao Hao <haowenchao@huawei.com> - 0.11.0-1
 - update to v0.11.0 version
 
